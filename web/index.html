@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self' blob:; child-src blob:; base-uri 'self'; form-action 'none'">
+  <meta name="description" content="Sistema de información de Nueva York: boroughs, patrimonio protegido y metro, con la fuente de cada cifra a un clic.">
+  <meta name="theme-color" content="#090c09">
+  <title>Nueva York · Archivo urbano</title>
+  <link rel="icon" href="icono.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="vendor/maplibre-gl-4.7.1/maplibre-gl.css">
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+
+  <div id="arranque" class="arranque" role="status" aria-live="polite">
+    <div class="arranque-caja">
+      <p class="rotulo">Iniciando sistema<span class="cursor">_</span></p>
+      <ol id="arranque-lista" class="arranque-lista"></ol>
+      <button id="arranque-saltar" class="boton-texto" type="button">Saltar →</button>
+    </div>
+  </div>
+
+  <header class="barra">
+    <a class="marca" href="#/resumen">
+      <span class="marca-cod">ARC-NYC</span>
+      <span class="marca-nombre">Nueva York <span class="tenue">/ archivo urbano</span></span>
+    </a>
+    <p class="barra-estado"><span class="punto-vivo" aria-hidden="true"></span><span id="estado-lago">Leyendo el lago…</span></p>
+  </header>
+
+  <div class="marco">
+    <nav class="indice" aria-label="Módulos">
+      <p class="rotulo indice-titulo">Índice de módulos</p>
+      <ol id="indice-lista">
+        <li><a href="#/resumen" data-modulo="resumen"><span class="num">01</span>Resumen</a></li>
+        <li><a href="#/boroughs" data-modulo="boroughs"><span class="num">02</span>Boroughs</a></li>
+        <li><a href="#/lugares" data-modulo="lugares"><span class="num">03</span>Lugares</a></li>
+        <li><a href="#/preguntas" data-modulo="preguntas"><span class="num">04</span>Preguntas</a></li>
+        <li><a href="#/fuentes" data-modulo="fuentes"><span class="num">05</span>Fuentes</a></li>
+        <li><a href="#/acerca" data-modulo="acerca"><span class="num">06</span>Acerca</a></li>
+      </ol>
+      <div class="indice-pie">
+        <p class="rotulo">Punto de referencia</p>
+        <p id="coordenadas" class="mono"></p>
+      </div>
+    </nav>
+
+    <main id="contenido" class="contenido" tabindex="-1"></main>
+  </div>
+
+  <footer class="pie">
+    <p><span class="rotulo">Grupo</span> Erick Santiago Ochoa Barrueto · Mariana Garcia Zapata · Santiago Vélez Blandón</p>
+    <p class="tenue">Tópicos de Sistemas de Información · Taller de datos · Sistema abierto por decisión del grupo ·
+      <a href="https://github.com/Zacks081/Taller_Datos_NYC">Repositorio</a></p>
+  </footer>
+
+  <dialog id="procedencia" class="procedencia" aria-labelledby="proc-titulo">
+    <div class="hud">
+      <div class="proc-cabeza">
+        <p class="rotulo">Procedencia del dato</p>
+        <button class="cerrar" type="button" aria-label="Cerrar">✕</button>
+      </div>
+      <div id="proc-cuerpo"></div>
+    </div>
+  </dialog>
+
+  <div id="tooltip" class="tooltip" role="tooltip" hidden></div>
+
+  <script src="vendor/maplibre-gl-4.7.1/maplibre-gl.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

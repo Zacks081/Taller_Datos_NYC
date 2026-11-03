@@ -1,0 +1,23 @@
+# Claves y secretos: nunca al repositorio
+.env
+.env.*
+*.key
+secrets/
+
+# Crudos de la ingesta (nunca al repositorio ni al despliegue)
+lago/raw/
+
+# Copia del lago que arma el despliegue dentro de web/ (la fuente es lago/)
+web/lago/
+
+# Vercel
+.vercel/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Sistema
+.DS_Store
+node_modules/

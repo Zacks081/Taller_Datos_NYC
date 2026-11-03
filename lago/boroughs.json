@@ -1,0 +1,168 @@
+{
+ "tema": "boroughs",
+ "probado": "2026-11-02",
+ "fuentes": [
+  {
+   "id": "F01",
+   "nombre": "Borough Boundaries",
+   "entidad": "Department of City Planning (DCP)",
+   "url": "https://data.cityofnewyork.us/resource/gthc-hcne.json",
+   "licencia": "Public data sets shall be made available without any registration requirement, license requirement or restrictions on their use (NYC Administrative Code, 23-502 d)",
+   "estado": "vivo",
+   "probado": "2026-11-02"
+  },
+  {
+   "id": "F02",
+   "nombre": "MTA Subway Stations",
+   "entidad": "Metropolitan Transportation Authority (MTA)",
+   "url": "https://data.ny.gov/resource/39hk-dx4f.json",
+   "licencia": "So long as you are not doing anything malicious with NYS data, you may use it as you wish, subject to no other requirements (OPEN-NY Terms of Use, last modified March 8, 2013)",
+   "estado": "vivo",
+   "probado": "2026-11-02"
+  },
+  {
+   "id": "F03",
+   "nombre": "Individual Landmark Sites",
+   "entidad": "Landmarks Preservation Commission (LPC)",
+   "url": "https://data.cityofnewyork.us/resource/buis-pvji.json",
+   "licencia": "Public data sets shall be made available without any registration requirement, license requirement or restrictions on their use (NYC Administrative Code, 23-502 d)",
+   "estado": "vivo",
+   "probado": "2026-11-02"
+  },
+  {
+   "id": "F06",
+   "nombre": "Parks Properties",
+   "entidad": "Department of Parks and Recreation (NYC Parks)",
+   "url": "https://data.cityofnewyork.us/resource/enfh-gkve.json",
+   "licencia": "Public data sets shall be made available without any registration requirement, license requirement or restrictions on their use (NYC Administrative Code, 23-502 d)",
+   "estado": "vivo",
+   "probado": "2026-11-02"
+  },
+  {
+   "id": "F07",
+   "nombre": "QuickFacts (ciudad y cinco condados)",
+   "entidad": "U.S. Census Bureau",
+   "url": "https://www.census.gov/quickfacts/fact/table/newyorkcitynewyork/PST045225",
+   "licencia": "Data users who create their own estimates using data from disseminated tables and other data should cite the Census Bureau as the source of the original data only.",
+   "estado": "declarado",
+   "probado": "2026-10-06"
+  }
+ ],
+ "campos": {
+  "codigo_borough": {
+   "unidad": "código",
+   "vigencia": "versión 26c",
+   "fuente": "F01",
+   "nota": "1 Manhattan, 2 Bronx, 3 Brooklyn, 4 Queens, 5 Staten Island"
+  },
+  "nombre_borough": {
+   "unidad": "texto",
+   "vigencia": "versión 26c",
+   "fuente": "F01"
+  },
+  "poblacion_estimada": {
+   "unidad": "personas",
+   "vigencia": "2025-07-01",
+   "fuente": "F07"
+  },
+  "area_tierra_km2": {
+   "unidad": "km²",
+   "vigencia": "versión 26c",
+   "fuente": "F01"
+  },
+  "estaciones_metro": {
+   "unidad": "estaciones",
+   "vigencia": "2026-11-02",
+   "fuente": "F02",
+   "nota": "En Staten Island son estaciones del Staten Island Railway"
+  },
+  "habitantes_por_estacion": {
+   "unidad": "personas por estación",
+   "vigencia": "población 2025-07-01; estaciones 2026-11-02",
+   "fuente": [
+    "F07",
+    "F02"
+   ],
+   "calculo": "Población estimada dividida entre estaciones de metro",
+   "aviso": "Mezcla la población estimada a julio de 2025 con las estaciones vigentes en 2026. Sirve para comparar boroughs entre sí, no es una cifra oficial."
+  },
+  "landmarks_individuales": {
+   "unidad": "sitios designados",
+   "vigencia": "2026-06-30",
+   "fuente": "F03",
+   "nota": "Los registros sin borough quedan fuera. No se guardan direcciones ni BBL"
+  },
+  "area_parques_km2": {
+   "unidad": "km²",
+   "vigencia": "2026-10-16",
+   "fuente": "F06",
+   "nota": "Propiedades de NYC Parks no retiradas, incluidas canchas y plazoletas"
+  },
+  "pct_area_parques": {
+   "unidad": "%",
+   "vigencia": "parques 2026-10-16; territorio versión 26c",
+   "fuente": [
+    "F06",
+    "F01"
+   ],
+   "calculo": "Área de parques dividida entre área de tierra"
+  }
+ },
+ "filas": [
+  {
+   "codigo_borough": 1,
+   "nombre_borough": "Manhattan",
+   "poblacion_estimada": 1664862,
+   "area_tierra_km2": 59.15,
+   "estaciones_metro": 153,
+   "habitantes_por_estacion": 10881,
+   "landmarks_individuales": 989,
+   "area_parques_km2": 11.64,
+   "pct_area_parques": 19.7
+  },
+  {
+   "codigo_borough": 2,
+   "nombre_borough": "Bronx",
+   "poblacion_estimada": 1406332,
+   "area_tierra_km2": 110.29,
+   "estaciones_metro": 70,
+   "habitantes_por_estacion": 20090,
+   "landmarks_individuales": 101,
+   "area_parques_km2": 29.46,
+   "pct_area_parques": 26.7
+  },
+  {
+   "codigo_borough": 3,
+   "nombre_borough": "Brooklyn",
+   "poblacion_estimada": 2653963,
+   "area_tierra_km2": 179.72,
+   "estaciones_metro": 169,
+   "habitantes_por_estacion": 15704,
+   "landmarks_individuales": 212,
+   "area_parques_km2": 19.71,
+   "pct_area_parques": 11.0
+  },
+  {
+   "codigo_borough": 4,
+   "nombre_borough": "Queens",
+   "poblacion_estimada": 2358182,
+   "area_tierra_km2": 282.56,
+   "estaciones_metro": 83,
+   "habitantes_por_estacion": 28412,
+   "landmarks_individuales": 86,
+   "area_parques_km2": 31.22,
+   "pct_area_parques": 11.0
+  },
+  {
+   "codigo_borough": 5,
+   "nombre_borough": "Staten Island",
+   "poblacion_estimada": 501290,
+   "area_tierra_km2": 150.84,
+   "estaciones_metro": 21,
+   "habitantes_por_estacion": 23871,
+   "landmarks_individuales": 139,
+   "area_parques_km2": 31.23,
+   "pct_area_parques": 20.7
+  }
+ ]
+}

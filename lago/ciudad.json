@@ -1,0 +1,71 @@
+{
+ "tema": "ciudad",
+ "probado": "2026-11-02",
+ "fuentes": [
+  {
+   "id": "F01",
+   "nombre": "Borough Boundaries",
+   "entidad": "Department of City Planning (DCP)",
+   "url": "https://data.cityofnewyork.us/resource/gthc-hcne.json",
+   "licencia": "Public data sets shall be made available without any registration requirement, license requirement or restrictions on their use (NYC Administrative Code, 23-502 d)",
+   "estado": "vivo",
+   "probado": "2026-11-02"
+  },
+  {
+   "id": "F07",
+   "nombre": "QuickFacts (ciudad y cinco condados)",
+   "entidad": "U.S. Census Bureau",
+   "url": "https://www.census.gov/quickfacts/fact/table/newyorkcitynewyork/PST045225",
+   "licencia": "Data users who create their own estimates using data from disseminated tables and other data should cite the Census Bureau as the source of the original data only.",
+   "estado": "declarado",
+   "probado": "2026-10-06"
+  },
+  {
+   "id": "F08",
+   "nombre": "Elevation Point Query Service (3DEP)",
+   "entidad": "U.S. Geological Survey (USGS)",
+   "url": "https://epqs.nationalmap.gov/v1/json",
+   "licencia": "USGS-authored or produced data and information are considered to be in the U.S. Public Domain",
+   "estado": "vivo",
+   "probado": "2026-11-02"
+  }
+ ],
+ "cifras": {
+  "poblacion_estimada": {
+   "valor": 8584629,
+   "unidad": "personas",
+   "vigencia": "2025-07-01",
+   "fuente": "F07"
+  },
+  "poblacion_censo_2020": {
+   "valor": 8804190,
+   "unidad": "personas",
+   "vigencia": "2020-04-01",
+   "fuente": "F07"
+  },
+  "area_tierra_km2": {
+   "valor": 782.6,
+   "unidad": "km²",
+   "vigencia": "versión 26c",
+   "fuente": "F01",
+   "calculo": "Suma del área de tierra de los cinco boroughs, sin el agua"
+  },
+  "renta_mediana_bruta": {
+   "valor": 1821,
+   "unidad": "dólares al mes",
+   "vigencia": "2020-2024",
+   "fuente": "F07"
+  },
+  "elevacion_referencia_m": {
+   "valor": 13.2,
+   "unidad": "metros sobre el nivel del mar",
+   "vigencia": "2026-11-02",
+   "fuente": "F08",
+   "punto": [
+    40.7128,
+    -74.006
+   ],
+   "nota": "Un punto cerca de City Hall, en el modelo 3DEP vigente el día de la consulta"
+  }
+ }
+}

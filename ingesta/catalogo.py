@@ -1,0 +1,115 @@
+"""Catálogo de fuentes: una entrada por cada fuente del rastreo, entre o no al lago.
+
+Es la misma lista de la hoja «1. Fuentes» del Excel, con los mismos IDs.
+Las licencias se copian tal como aparecen en la página que dice «donde_licencia».
+Si la fuente no dice nada, se escribe «no declara».
+
+«probado» es el día en que la fuente respondió de verdad. Para las fuentes que
+armar_lago.py consulta en cada corrida, ese día se reemplaza por la fecha de la corrida.
+"""
+
+TERMINOS_NYC = ("Public data sets shall be made available without any registration requirement, "
+                "license requirement or restrictions on their use (NYC Administrative Code, 23-502 d)")
+# Pendiente: la página de American Legal con la sección 23-502 responde a los scripts con
+# un desafío de Cloudflare. Hay que abrirla en el navegador y pegar aquí la URL exacta.
+DONDE_NYC = ""
+
+FUENTES = [
+    {"id": "F01", "nombre": "Borough Boundaries", "entidad": "Department of City Planning (DCP)",
+     "url": "https://data.cityofnewyork.us/resource/gthc-hcne.json",
+     "licencia": TERMINOS_NYC, "donde_licencia": DONDE_NYC,
+     "estado": "Integrada", "acceso": "vivo", "personas": "No", "probado": "2026-10-06",
+     "nota": "Límites de los boroughs sin el agua. shape_area viene en pies cuadrados (EPSG:2263)."},
+    {"id": "F02", "nombre": "MTA Subway Stations", "entidad": "Metropolitan Transportation Authority (MTA)",
+     "url": "https://data.ny.gov/resource/39hk-dx4f.json",
+     "licencia": ("So long as you are not doing anything malicious with NYS data, you may use it as "
+                  "you wish, subject to no other requirements (OPEN-NY Terms of Use, last modified March 8, 2013)"),
+     "donde_licencia": "https://data.ny.gov/download/77gx-ii52/application%2Fpdf",
+     "estado": "Integrada", "acceso": "vivo", "personas": "No", "probado": "2026-10-06",
+     "nota": "496 estaciones; las 21 de Staten Island son del Staten Island Railway."},
+    {"id": "F03", "nombre": "Individual Landmark Sites", "entidad": "Landmarks Preservation Commission (LPC)",
+     "url": "https://data.cityofnewyork.us/resource/buis-pvji.json",
+     "licencia": TERMINOS_NYC, "donde_licencia": DONDE_NYC,
+     "estado": "Integrada", "acceso": "vivo", "personas": "No", "probado": "2026-10-06",
+     "nota": "Trae dirección y BBL de cada sitio. Al lago solo entra el conteo por borough."},
+    {"id": "F04", "nombre": "Scenic Landmarks", "entidad": "Landmarks Preservation Commission (LPC)",
+     "url": "https://data.cityofnewyork.us/resource/qexa-qpj6.json",
+     "licencia": TERMINOS_NYC, "donde_licencia": DONDE_NYC,
+     "estado": "Integrada", "acceso": "vivo", "personas": "No", "probado": "2026-10-06",
+     "nota": "Solo polígonos. De aquí sale el registro de Central Park (LP-00851)."},
+    {"id": "F05", "nombre": "Designated and Calendared Buildings and Sites",
+     "entidad": "Landmarks Preservation Commission (LPC)",
+     "url": "https://data.cityofnewyork.us/resource/ncre-qhxs.json",
+     "licencia": TERMINOS_NYC, "donde_licencia": DONDE_NYC,
+     "estado": "Integrada", "acceso": "vivo", "personas": "No", "probado": "2026-10-06",
+     "nota": "De aquí solo se toma el Puente de Brooklyn (LP-00098), que no está en F03."},
+    {"id": "F06", "nombre": "Parks Properties", "entidad": "Department of Parks and Recreation (NYC Parks)",
+     "url": "https://data.cityofnewyork.us/resource/enfh-gkve.json",
+     "licencia": TERMINOS_NYC, "donde_licencia": DONDE_NYC,
+     "estado": "Integrada", "acceso": "vivo", "personas": "No", "probado": "2026-10-06",
+     "nota": "Incluye canchas, plazoletas y franjas, no solo parques grandes."},
+    {"id": "F07", "nombre": "QuickFacts (ciudad y cinco condados)", "entidad": "U.S. Census Bureau",
+     "url": "https://www.census.gov/quickfacts/fact/table/newyorkcitynewyork/PST045225",
+     "licencia": ("Data users who create their own estimates using data from disseminated tables and "
+                  "other data should cite the Census Bureau as the source of the original data only."),
+     "donde_licencia": "https://www.census.gov/about/policies/citation.html",
+     "estado": "Integrada", "acceso": "declarado", "personas": "Solo conteos por zona", "probado": "2026-10-06",
+     "nota": ("Transcrita a mano: la descarga en CSV responde a los scripts con un desafío de Cloudflare "
+              "y la API (F10) pide llave.")},
+    {"id": "F08", "nombre": "Elevation Point Query Service (3DEP)", "entidad": "U.S. Geological Survey (USGS)",
+     "url": "https://epqs.nationalmap.gov/v1/json",
+     "licencia": "USGS-authored or produced data and information are considered to be in the U.S. Public Domain",
+     "donde_licencia": "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits",
+     "estado": "Integrada", "acceso": "vivo", "personas": "No", "probado": "2026-10-06",
+     "nota": "Un solo punto, cerca de City Hall."},
+    {"id": "F09", "nombre": "Módulo Locations de la app anterior (Lovable)", "entidad": "El grupo",
+     "url": "https://new-york-intelligence-archive.lovable.app/locations",
+     "licencia": "Propia del grupo", "donde_licencia": "",
+     "estado": "Integrada", "acceso": "declarado", "personas": "No", "probado": "2026-10-06",
+     "nota": "La generó la IA. Solo se usan los IDs y los nombres de los siete lugares."},
+    {"id": "F10", "nombre": "Census Data API (ACS 5 años)", "entidad": "U.S. Census Bureau",
+     "url": "https://api.census.gov/data/2023/acs/acs5",
+     "licencia": "no declara", "donde_licencia": "",
+     "estado": "Candidata", "acceso": "llave gratuita", "personas": "Solo conteos por zona", "probado": "2026-10-06",
+     "nota": "Respondió «A valid key must be included with each data API request»."},
+    {"id": "F11", "nombre": "U.S. Climate Normals 1991-2020", "entidad": "NOAA, National Centers for Environmental Information",
+     "url": "https://www.ncei.noaa.gov/access/services/data/v1",
+     "licencia": "no declara", "donde_licencia": "",
+     "estado": "Candidata", "acceso": "vivo", "personas": "No", "probado": "2026-10-06",
+     "nota": "Responde, pero no encontramos sus términos de uso."},
+    {"id": "F12", "nombre": "Wikimedia Pageviews API", "entidad": "Wikimedia Foundation",
+     "url": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/",
+     "licencia": "All Analytics datasets are available under the Creative Commons CC0 dedication.",
+     "donde_licencia": "https://dumps.wikimedia.org/other/pageviews/readme.html",
+     "estado": "Integrada", "acceso": "vivo", "personas": "No", "probado": "2026-11-02",
+     "nota": "Vistas mensuales hechas por personas (agente «user») del artículo de cada lugar en en.wikipedia."},
+    {"id": "F13", "nombre": "Wikidata Query Service", "entidad": "Wikimedia Foundation",
+     "url": "https://query.wikidata.org/sparql",
+     "licencia": ("All structured data from the main, Property, Lexeme, and EntitySchema namespaces "
+                  "is available under the Creative Commons CC0 License"),
+     "donde_licencia": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+     "estado": "Integrada", "acceso": "vivo", "personas": "No", "probado": "2026-11-02",
+     "nota": "Año de inicio, año de apertura y punto de los lugares que la LPC no ubica."},
+    {"id": "F14", "nombre": "The Newest New Yorkers, 2026", "entidad": "Department of City Planning (DCP)",
+     "url": "https://www.nyc.gov/assets/planning/newest-new-yorkers-2026/Ch2.html",
+     "licencia": "no declara", "donde_licencia": "",
+     "estado": "Candidata", "acceso": "solo página", "personas": "Solo conteos por zona", "probado": "2026-10-06",
+     "nota": "Solo texto y gráficos."},
+    {"id": "F15", "nombre": "New York City Population by Borough, 1950 - 2040", "entidad": "Department of City Planning (DCP)",
+     "url": "https://data.cityofnewyork.us/resource/xywu-7bv9.json",
+     "licencia": TERMINOS_NYC, "donde_licencia": DONDE_NYC,
+     "estado": "Descartada", "acceso": "vivo", "personas": "Solo conteos por zona", "probado": "2026-10-06",
+     "nota": "No se actualiza desde 2014: su columna de 2020 es una proyección, no el censo."},
+    {"id": "F16", "nombre": "NYPD Complaint Data Current (Year To Date)", "entidad": "New York City Police Department (NYPD)",
+     "url": "https://data.cityofnewyork.us/resource/5uac-w243.json",
+     "licencia": TERMINOS_NYC, "donde_licencia": DONDE_NYC,
+     "estado": "Descartada", "acceso": "vivo", "personas": "Personas identificables", "probado": "2026-10-06",
+     "nota": "Cada fila es una denuncia con fecha, hora, punto y edad, raza y sexo de víctima y sospechoso."},
+    {"id": "F17", "nombre": "Entradas recientes del archivo (portada de la app anterior)", "entidad": "Ninguna: las generó Lovable",
+     "url": "https://new-york-intelligence-archive.lovable.app/overview",
+     "licencia": "no declara", "donde_licencia": "",
+     "estado": "No existe", "acceso": "inventada", "personas": "No", "probado": "2026-10-06",
+     "nota": "Cuatro documentos con fecha, como «Subway signal-system decay survey». No existen."},
+]
+
+POR_ID = {f["id"]: f for f in FUENTES}

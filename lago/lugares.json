@@ -1,0 +1,368 @@
+{
+ "tema": "lugares",
+ "probado": "2026-11-02",
+ "fuentes": [
+  {
+   "id": "F02",
+   "nombre": "MTA Subway Stations",
+   "entidad": "Metropolitan Transportation Authority (MTA)",
+   "url": "https://data.ny.gov/resource/39hk-dx4f.json",
+   "licencia": "So long as you are not doing anything malicious with NYS data, you may use it as you wish, subject to no other requirements (OPEN-NY Terms of Use, last modified March 8, 2013)",
+   "estado": "vivo",
+   "probado": "2026-11-02"
+  },
+  {
+   "id": "F03",
+   "nombre": "Individual Landmark Sites",
+   "entidad": "Landmarks Preservation Commission (LPC)",
+   "url": "https://data.cityofnewyork.us/resource/buis-pvji.json",
+   "licencia": "Public data sets shall be made available without any registration requirement, license requirement or restrictions on their use (NYC Administrative Code, 23-502 d)",
+   "estado": "vivo",
+   "probado": "2026-11-02"
+  },
+  {
+   "id": "F04",
+   "nombre": "Scenic Landmarks",
+   "entidad": "Landmarks Preservation Commission (LPC)",
+   "url": "https://data.cityofnewyork.us/resource/qexa-qpj6.json",
+   "licencia": "Public data sets shall be made available without any registration requirement, license requirement or restrictions on their use (NYC Administrative Code, 23-502 d)",
+   "estado": "vivo",
+   "probado": "2026-11-02"
+  },
+  {
+   "id": "F05",
+   "nombre": "Designated and Calendared Buildings and Sites",
+   "entidad": "Landmarks Preservation Commission (LPC)",
+   "url": "https://data.cityofnewyork.us/resource/ncre-qhxs.json",
+   "licencia": "Public data sets shall be made available without any registration requirement, license requirement or restrictions on their use (NYC Administrative Code, 23-502 d)",
+   "estado": "vivo",
+   "probado": "2026-11-02"
+  },
+  {
+   "id": "F09",
+   "nombre": "Módulo Locations de la app anterior (Lovable)",
+   "entidad": "El grupo",
+   "url": "https://new-york-intelligence-archive.lovable.app/locations",
+   "licencia": "Propia del grupo",
+   "estado": "declarado",
+   "probado": "2026-11-02"
+  },
+  {
+   "id": "F12",
+   "nombre": "Wikimedia Pageviews API",
+   "entidad": "Wikimedia Foundation",
+   "url": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/",
+   "licencia": "All Analytics datasets are available under the Creative Commons CC0 dedication.",
+   "estado": "vivo",
+   "probado": "2026-11-02"
+  },
+  {
+   "id": "F13",
+   "nombre": "Wikidata Query Service",
+   "entidad": "Wikimedia Foundation",
+   "url": "https://query.wikidata.org/sparql",
+   "licencia": "All structured data from the main, Property, Lexeme, and EntitySchema namespaces is available under the Creative Commons CC0 License",
+   "estado": "vivo",
+   "probado": "2026-11-02"
+  }
+ ],
+ "campos": {
+  "id_lugar": {
+   "unidad": "código",
+   "vigencia": "2026-11-02",
+   "fuente": "F09"
+  },
+  "nombre_en_app": {
+   "unidad": "texto",
+   "vigencia": "2026-11-02",
+   "fuente": "F09"
+  },
+  "nombre_oficial": {
+   "unidad": "texto",
+   "vigencia": "F03 2026-06-30; F04 2026-06-18; F05 2026-06-18",
+   "fuente": [
+    "F03",
+    "F04",
+    "F05"
+   ],
+   "fuente_por_fila": "fuente_registro"
+  },
+  "codigo_borough": {
+   "unidad": "código",
+   "vigencia": "F03 2026-06-30; F04 2026-06-18; F05 2026-06-18",
+   "fuente": [
+    "F03",
+    "F04",
+    "F05"
+   ],
+   "fuente_por_fila": "fuente_registro",
+   "nota": "Hudson Yards no está en la LPC: su punto cae dentro de Manhattan en F01"
+  },
+  "latitud": {
+   "unidad": "grados (WGS84)",
+   "vigencia": "F03 2026-06-30; F04 2026-06-18; F05 2026-06-18",
+   "fuente": [
+    "F03",
+    "F05",
+    "F13"
+   ],
+   "fuente_por_fila": "origen_punto"
+  },
+  "longitud": {
+   "unidad": "grados (WGS84)",
+   "vigencia": "F03 2026-06-30; F04 2026-06-18; F05 2026-06-18",
+   "fuente": [
+    "F03",
+    "F05",
+    "F13"
+   ],
+   "fuente_por_fila": "origen_punto"
+  },
+  "origen_punto": {
+   "unidad": "ID de fuente",
+   "fuente": "grupo",
+   "nota": "Si la LPC no trae punto, se usa la coordenada de Wikidata (F13)"
+  },
+  "codigo_lpc": {
+   "unidad": "código",
+   "vigencia": "F03 2026-06-30; F04 2026-06-18; F05 2026-06-18",
+   "fuente": [
+    "F03",
+    "F04",
+    "F05"
+   ],
+   "fuente_por_fila": "fuente_registro"
+  },
+  "fecha_designacion": {
+   "unidad": "fecha",
+   "vigencia": "F03 2026-06-30; F04 2026-06-18; F05 2026-06-18",
+   "fuente": [
+    "F03",
+    "F04",
+    "F05"
+   ],
+   "fuente_por_fila": "fuente_registro"
+  },
+  "tipo_designacion": {
+   "unidad": "texto",
+   "vigencia": "F03 2026-06-30; F04 2026-06-18; F05 2026-06-18",
+   "fuente": [
+    "F03",
+    "F04",
+    "F05"
+   ],
+   "fuente_por_fila": "fuente_registro"
+  },
+  "fuente_registro": {
+   "unidad": "ID de fuente",
+   "fuente": "grupo",
+   "nota": "Amarre decidido por el grupo en lugares_app.py"
+  },
+  "wikidata": {
+   "unidad": "código",
+   "vigencia": "2026-11-02",
+   "fuente": "F13"
+  },
+  "articulo_wikipedia": {
+   "unidad": "texto",
+   "fuente": "grupo",
+   "nota": "Artículo de en.wikipedia escogido por el grupo para cada lugar"
+  },
+  "anio_inicio": {
+   "unidad": "año",
+   "vigencia": "2026-11-02",
+   "fuente": "F13",
+   "nota": "Propiedad P571 (inception)"
+  },
+  "anio_apertura": {
+   "unidad": "año",
+   "vigencia": "2026-11-02",
+   "fuente": "F13",
+   "nota": "Propiedad P1619 (fecha de apertura oficial)"
+  },
+  "estacion_cercana": {
+   "unidad": "texto",
+   "vigencia": "2026-11-02",
+   "fuente": "F02"
+  },
+  "lineas_estacion": {
+   "unidad": "texto",
+   "vigencia": "2026-11-02",
+   "fuente": "F02"
+  },
+  "distancia_estacion_m": {
+   "unidad": "metros en línea recta",
+   "vigencia": "2026-11-02",
+   "fuente": "F02",
+   "calculo": "Haversine entre el punto del lugar y la estación más cercana",
+   "proxy": true,
+   "aviso": "Es distancia en línea recta, no a pie: aproxima qué tan cerca queda el metro"
+  },
+  "vistas_wikipedia_12m": {
+   "unidad": "vistas de personas",
+   "vigencia": "2025-11 a 2026-10",
+   "fuente": "F12",
+   "calculo": "Suma de los doce meses de interes.json"
+  },
+  "nota": {
+   "unidad": "texto",
+   "fuente": "grupo"
+  }
+ },
+ "filas": [
+  {
+   "id_lugar": "LOC-001",
+   "nombre_en_app": "Lower Financial Core",
+   "nombre_oficial": "United States Custom House",
+   "codigo_borough": 1,
+   "latitud": 40.7040358,
+   "longitud": -74.0137486,
+   "origen_punto": "F03",
+   "codigo_lpc": "LP-00020",
+   "fecha_designacion": "1965-10-14",
+   "tipo_designacion": "Individual",
+   "fuente_registro": "F03",
+   "wikidata": "Q2068997",
+   "articulo_wikipedia": "Alexander_Hamilton_U.S._Custom_House",
+   "anio_inicio": null,
+   "anio_apertura": null,
+   "estacion_cercana": "Bowling Green",
+   "lineas_estacion": "4 5",
+   "distancia_estacion_m": 91,
+   "vistas_wikipedia_12m": 26540,
+   "nota": null
+  },
+  {
+   "id_lugar": "LOC-002",
+   "nombre_en_app": "Central Park Rectangle",
+   "nombre_oficial": "Central Park",
+   "codigo_borough": 1,
+   "latitud": 40.7825,
+   "longitud": -73.9661111,
+   "origen_punto": "F13",
+   "codigo_lpc": "LP-00851",
+   "fecha_designacion": "1974-04-16",
+   "tipo_designacion": "Escénico",
+   "fuente_registro": "F04",
+   "wikidata": "Q160409",
+   "articulo_wikipedia": "Central_Park",
+   "anio_inicio": 1856,
+   "anio_apertura": null,
+   "estacion_cercana": "86 St",
+   "lineas_estacion": "C B",
+   "distancia_estacion_m": 443,
+   "vistas_wikipedia_12m": 515186,
+   "nota": "El parque mide unos 4 km de largo: la distancia se mide desde el punto central de Wikidata."
+  },
+  {
+   "id_lugar": "LOC-003",
+   "nombre_en_app": "Grand Central Terminus",
+   "nombre_oficial": "Grand Central Terminal",
+   "codigo_borough": 1,
+   "latitud": 40.7526413,
+   "longitud": -73.9772794,
+   "origen_punto": "F03",
+   "codigo_lpc": "LP-00266",
+   "fecha_designacion": "1967-08-02",
+   "tipo_designacion": "Individual",
+   "fuente_registro": "F03",
+   "wikidata": "Q11290",
+   "articulo_wikipedia": "Grand_Central_Terminal",
+   "anio_inicio": 1913,
+   "anio_apertura": 1913,
+   "estacion_cercana": "Grand Central-42 St",
+   "lineas_estacion": "4 5 6",
+   "distancia_estacion_m": 103,
+   "vistas_wikipedia_12m": 286265,
+   "nota": null
+  },
+  {
+   "id_lugar": "LOC-004",
+   "nombre_en_app": "Harbor Liberty Outpost",
+   "nombre_oficial": "Statue of Liberty",
+   "codigo_borough": 1,
+   "latitud": 40.6899196,
+   "longitud": -74.0453371,
+   "origen_punto": "F03",
+   "codigo_lpc": "LP-00931",
+   "fecha_designacion": "1976-09-14",
+   "tipo_designacion": "Individual",
+   "fuente_registro": "F03",
+   "wikidata": "Q9202",
+   "articulo_wikipedia": "Statue_of_Liberty",
+   "anio_inicio": 1886,
+   "anio_apertura": null,
+   "estacion_cercana": "South Ferry",
+   "lineas_estacion": "1",
+   "distancia_estacion_m": 2992,
+   "vistas_wikipedia_12m": 1447392,
+   "nota": "Está en una isla: desde la estación hay que tomar el ferry."
+  },
+  {
+   "id_lugar": "LOC-005",
+   "nombre_en_app": "Brooklyn Bridge Span",
+   "nombre_oficial": "Brooklyn Bridge",
+   "codigo_borough": 1,
+   "latitud": 40.7114913,
+   "longitud": -74.0036431,
+   "origen_punto": "F05",
+   "codigo_lpc": "LP-00098",
+   "fecha_designacion": "1967-08-24",
+   "tipo_designacion": "Individual",
+   "fuente_registro": "F05",
+   "wikidata": "Q125006",
+   "articulo_wikipedia": "Brooklyn_Bridge",
+   "anio_inicio": null,
+   "anio_apertura": 1883,
+   "estacion_cercana": "Brooklyn Bridge-City Hall",
+   "lineas_estacion": "4 5 6",
+   "distancia_estacion_m": 180,
+   "vistas_wikipedia_12m": 455387,
+   "nota": "Une Manhattan (1) y Brooklyn (3); se usa 1 porque el punto está en la entrada por City Hall."
+  },
+  {
+   "id_lugar": "LOC-006",
+   "nombre_en_app": "Navy Yard Industrial Belt",
+   "nombre_oficial": "Old United States Naval Hospital, Brooklyn Navy Yard",
+   "codigo_borough": 3,
+   "latitud": 40.6991925,
+   "longitud": -73.965667,
+   "origen_punto": "F03",
+   "codigo_lpc": "LP-00003",
+   "fecha_designacion": "1965-10-14",
+   "tipo_designacion": "Individual",
+   "fuente_registro": "F03",
+   "wikidata": "Q23091442",
+   "articulo_wikipedia": "Brooklyn_Naval_Hospital",
+   "anio_inicio": 1838,
+   "anio_apertura": null,
+   "estacion_cercana": "Marcy Av",
+   "lineas_estacion": "M J Z",
+   "distancia_estacion_m": 1218,
+   "vistas_wikipedia_12m": 6997,
+   "nota": null
+  },
+  {
+   "id_lugar": "LOC-007",
+   "nombre_en_app": "Upper Westside Rail Yards",
+   "nombre_oficial": null,
+   "codigo_borough": 1,
+   "latitud": 40.7541667,
+   "longitud": -74.0025,
+   "origen_punto": "F13",
+   "codigo_lpc": null,
+   "fecha_designacion": null,
+   "tipo_designacion": null,
+   "fuente_registro": "F13",
+   "wikidata": "Q55885925",
+   "articulo_wikipedia": "Hudson_Yards_(development)",
+   "anio_inicio": null,
+   "anio_apertura": null,
+   "estacion_cercana": "34 St-Hudson Yards",
+   "lineas_estacion": "7",
+   "distancia_estacion_m": 197,
+   "vistas_wikipedia_12m": 66122,
+   "nota": "No está designado por la LPC. Queda en el Far West Side, no en el Upper West Side."
+  }
+ ]
+}
