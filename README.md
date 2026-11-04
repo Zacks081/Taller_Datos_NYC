@@ -5,7 +5,7 @@ Taller de datos, Tópicos de Sistemas de Información. Profesor Santiago Jiméne
 Grupo: Erick Santiago Ochoa Barrueto, Mariana Garcia Zapata y Santiago Vélez Blandón.
 Sistema publicado: https://tallerdatosnyc.vercel.app
 Repositorio: https://github.com/Zacks081/Taller_Datos_NYC
-Revisado: 2026-11-02
+Revisado: 2026-11-03
 
 ## Para quién y qué pregunta
 
@@ -124,8 +124,21 @@ Lo importante era la herramienta de visualización, así que ahí probamos con l
 
 - Nivel: abierto, por decisión del grupo. Todas las fuentes integradas son públicas, sus licencias permiten reutilizarlas y ningún dato del lago apunta a una persona. Una clave aquí sería de adorno.
 - Qué protegemos, y de quién: a los dueños de casas protegidas, para que nadie arme una lista con sus direcciones. Lo hacemos no guardando esos datos, y la verificación falla si alguien mete una dirección, un BBL, un correo o un teléfono en el lago.
-- Pruebas de terminal: como el sistema es abierto, lo esperado es que el sitio y los archivos del lago respondan 200 a cualquiera. (pendiente: correr los curl contra el enlace de Vercel cuando esté publicado y pegar aquí la salida)
-- Revisión de secretos: no usamos ninguna llave. Antes del primer commit buscamos en todos los archivos palabras como secret, password, token o api_key y no hubo nada. El .gitignore deja fuera .env, la carpeta .vercel y la copia del lago dentro de web/. Después del primer commit hay que correr `git log -p | grep -i -E "clave|secret|password|api_key|token"`.
+- Pruebas de terminal: como el sistema es abierto, lo esperado es que el sitio y los archivos del lago respondan 200 a cualquiera. El 2026-11-03 corrimos esto contra el enlace publicado y todo dio 200:
+
+```
+foreach ($p in "/","/app.js","/estilos.css","/lago/ciudad.json","/lago/boroughs.json","/lago/boroughs.geojson","/lago/lugares.json","/lago/interes.json","/lago/catalogo.json") { "$p " + (curl.exe -s -o NUL -w "%{http_code}" "https://tallerdatosnyc.vercel.app$p") }
+/ 200
+/app.js 200
+/estilos.css 200
+/lago/ciudad.json 200
+/lago/boroughs.json 200
+/lago/boroughs.geojson 200
+/lago/lugares.json 200
+/lago/interes.json 200
+/lago/catalogo.json 200
+```
+- Revisión de secretos: no usamos ninguna llave. El 2026-11-03 corrimos `git log -p | Select-String -Pattern "clave|secret|password|api_key|token"` sobre todo el historial. Todas las coincidencias son texto o nombres de variables (la palabra «clave» en verificar.py y app.js, el comentario del .gitignore, este README y los enunciados del profesor); ninguna es una llave, una contraseña o un token. El .gitignore deja fuera .env, la carpeta .vercel y la copia del lago dentro de web/.
 - Cabeceras: la página trae una política de seguridad de contenido (solo carga scripts, estilos y fuentes del mismo sitio) y Vercel agrega X-Content-Type-Options, X-Frame-Options y Referrer-Policy.
 
 ## Nuestra posición
