@@ -3,7 +3,7 @@
 Taller de datos, Tópicos de Sistemas de Información. Profesor Santiago Jiménez Londoño.
 
 Grupo: Erick Santiago Ochoa Barrueto, Mariana Garcia Zapata y Santiago Vélez Blandón.
-Sistema publicado: (pendiente: enlace de Vercel).
+Sistema publicado: https://tallerdatosnyc.vercel.app
 Repositorio: https://github.com/Zacks081/Taller_Datos_NYC
 Revisado: 2026-11-02
 
