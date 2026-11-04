@@ -152,6 +152,12 @@ check("boroughs: habitantes por estación cuadra con población y estaciones",
           for f in filas))
 check("boroughs: habitantes por estación avisa que mezcla años",
       bool(boroughs["campos"]["habitantes_por_estacion"].get("aviso")))
+# Conteo mínimo por zona (reflexión «Público no es inocuo»): con menos de 10 sitios en una zona
+# se podría señalar una casa concreta, así que no se publica.
+MINIMO_POR_ZONA = 10
+check(f"boroughs: cada zona tiene al menos {MINIMO_POR_ZONA} landmarks antes de publicar el conteo",
+      all(f["landmarks_individuales"] >= MINIMO_POR_ZONA for f in filas),
+      [(f["nombre_borough"], f["landmarks_individuales"]) for f in filas if f["landmarks_individuales"] < MINIMO_POR_ZONA])
 
 # Territorio: cinco polígonos en WGS84 alrededor de Nueva York
 poligonos = {r["properties"]["codigo_borough"]: r["geometry"]["coordinates"] for r in territorio["features"]}

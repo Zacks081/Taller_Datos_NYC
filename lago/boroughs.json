@@ -1,6 +1,6 @@
 {
  "tema": "boroughs",
- "probado": "2026-11-02",
+ "probado": "2026-11-03",
  "fuentes": [
   {
    "id": "F01",
@@ -9,7 +9,7 @@
    "url": "https://data.cityofnewyork.us/resource/gthc-hcne.json",
    "licencia": "Public data sets shall be made available without any registration requirement, license requirement or restrictions on their use (NYC Administrative Code, 23-502 d)",
    "estado": "vivo",
-   "probado": "2026-11-02"
+   "probado": "2026-11-03"
   },
   {
    "id": "F02",
@@ -18,7 +18,7 @@
    "url": "https://data.ny.gov/resource/39hk-dx4f.json",
    "licencia": "So long as you are not doing anything malicious with NYS data, you may use it as you wish, subject to no other requirements (OPEN-NY Terms of Use, last modified March 8, 2013)",
    "estado": "vivo",
-   "probado": "2026-11-02"
+   "probado": "2026-11-03"
   },
   {
    "id": "F03",
@@ -27,7 +27,7 @@
    "url": "https://data.cityofnewyork.us/resource/buis-pvji.json",
    "licencia": "Public data sets shall be made available without any registration requirement, license requirement or restrictions on their use (NYC Administrative Code, 23-502 d)",
    "estado": "vivo",
-   "probado": "2026-11-02"
+   "probado": "2026-11-03"
   },
   {
    "id": "F06",
@@ -36,7 +36,7 @@
    "url": "https://data.cityofnewyork.us/resource/enfh-gkve.json",
    "licencia": "Public data sets shall be made available without any registration requirement, license requirement or restrictions on their use (NYC Administrative Code, 23-502 d)",
    "estado": "vivo",
-   "probado": "2026-11-02"
+   "probado": "2026-11-03"
   },
   {
    "id": "F07",
@@ -72,13 +72,13 @@
   },
   "estaciones_metro": {
    "unidad": "estaciones",
-   "vigencia": "2026-11-02",
+   "vigencia": "2026-11-03",
    "fuente": "F02",
    "nota": "En Staten Island son estaciones del Staten Island Railway"
   },
   "habitantes_por_estacion": {
    "unidad": "personas por estación",
-   "vigencia": "población 2025-07-01; estaciones 2026-11-02",
+   "vigencia": "población 2025-07-01; estaciones 2026-11-03",
    "fuente": [
     "F07",
     "F02"

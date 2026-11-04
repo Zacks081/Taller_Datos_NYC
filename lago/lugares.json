@@ -1,6 +1,6 @@
 {
  "tema": "lugares",
- "probado": "2026-11-02",
+ "probado": "2026-11-03",
  "fuentes": [
   {
    "id": "F02",
@@ -9,7 +9,7 @@
    "url": "https://data.ny.gov/resource/39hk-dx4f.json",
    "licencia": "So long as you are not doing anything malicious with NYS data, you may use it as you wish, subject to no other requirements (OPEN-NY Terms of Use, last modified March 8, 2013)",
    "estado": "vivo",
-   "probado": "2026-11-02"
+   "probado": "2026-11-03"
   },
   {
    "id": "F03",
@@ -18,7 +18,7 @@
    "url": "https://data.cityofnewyork.us/resource/buis-pvji.json",
    "licencia": "Public data sets shall be made available without any registration requirement, license requirement or restrictions on their use (NYC Administrative Code, 23-502 d)",
    "estado": "vivo",
-   "probado": "2026-11-02"
+   "probado": "2026-11-03"
   },
   {
    "id": "F04",
@@ -27,7 +27,7 @@
    "url": "https://data.cityofnewyork.us/resource/qexa-qpj6.json",
    "licencia": "Public data sets shall be made available without any registration requirement, license requirement or restrictions on their use (NYC Administrative Code, 23-502 d)",
    "estado": "vivo",
-   "probado": "2026-11-02"
+   "probado": "2026-11-03"
   },
   {
    "id": "F05",
@@ -36,7 +36,7 @@
    "url": "https://data.cityofnewyork.us/resource/ncre-qhxs.json",
    "licencia": "Public data sets shall be made available without any registration requirement, license requirement or restrictions on their use (NYC Administrative Code, 23-502 d)",
    "estado": "vivo",
-   "probado": "2026-11-02"
+   "probado": "2026-11-03"
   },
   {
    "id": "F09",
@@ -54,7 +54,7 @@
    "url": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/",
    "licencia": "All Analytics datasets are available under the Creative Commons CC0 dedication.",
    "estado": "vivo",
-   "probado": "2026-11-02"
+   "probado": "2026-11-03"
   },
   {
    "id": "F13",
@@ -63,7 +63,7 @@
    "url": "https://query.wikidata.org/sparql",
    "licencia": "All structured data from the main, Property, Lexeme, and EntitySchema namespaces is available under the Creative Commons CC0 License",
    "estado": "vivo",
-   "probado": "2026-11-02"
+   "probado": "2026-11-03"
   }
  ],
  "campos": {
@@ -160,7 +160,7 @@
   },
   "wikidata": {
    "unidad": "código",
-   "vigencia": "2026-11-02",
+   "vigencia": "2026-11-03",
    "fuente": "F13"
   },
   "articulo_wikipedia": {
@@ -170,29 +170,29 @@
   },
   "anio_inicio": {
    "unidad": "año",
-   "vigencia": "2026-11-02",
+   "vigencia": "2026-11-03",
    "fuente": "F13",
    "nota": "Propiedad P571 (inception)"
   },
   "anio_apertura": {
    "unidad": "año",
-   "vigencia": "2026-11-02",
+   "vigencia": "2026-11-03",
    "fuente": "F13",
    "nota": "Propiedad P1619 (fecha de apertura oficial)"
   },
   "estacion_cercana": {
    "unidad": "texto",
-   "vigencia": "2026-11-02",
+   "vigencia": "2026-11-03",
    "fuente": "F02"
   },
   "lineas_estacion": {
    "unidad": "texto",
-   "vigencia": "2026-11-02",
+   "vigencia": "2026-11-03",
    "fuente": "F02"
   },
   "distancia_estacion_m": {
    "unidad": "metros en línea recta",
-   "vigencia": "2026-11-02",
+   "vigencia": "2026-11-03",
    "fuente": "F02",
    "calculo": "Haversine entre el punto del lugar y la estación más cercana",
    "proxy": true,

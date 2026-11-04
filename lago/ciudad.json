@@ -1,6 +1,6 @@
 {
  "tema": "ciudad",
- "probado": "2026-11-02",
+ "probado": "2026-11-03",
  "fuentes": [
   {
    "id": "F01",
@@ -9,7 +9,7 @@
    "url": "https://data.cityofnewyork.us/resource/gthc-hcne.json",
    "licencia": "Public data sets shall be made available without any registration requirement, license requirement or restrictions on their use (NYC Administrative Code, 23-502 d)",
    "estado": "vivo",
-   "probado": "2026-11-02"
+   "probado": "2026-11-03"
   },
   {
    "id": "F07",
@@ -27,7 +27,7 @@
    "url": "https://epqs.nationalmap.gov/v1/json",
    "licencia": "USGS-authored or produced data and information are considered to be in the U.S. Public Domain",
    "estado": "vivo",
-   "probado": "2026-11-02"
+   "probado": "2026-11-03"
   }
  ],
  "cifras": {
@@ -59,7 +59,7 @@
   "elevacion_referencia_m": {
    "valor": 13.2,
    "unidad": "metros sobre el nivel del mar",
-   "vigencia": "2026-11-02",
+   "vigencia": "2026-11-03",
    "fuente": "F08",
    "punto": [
     40.7128,

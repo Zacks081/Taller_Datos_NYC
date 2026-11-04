@@ -1,6 +1,6 @@
 {
  "tema": "interes",
- "probado": "2026-11-02",
+ "probado": "2026-11-03",
  "fuentes": [
   {
    "id": "F12",
@@ -9,7 +9,7 @@
    "url": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/",
    "licencia": "All Analytics datasets are available under the Creative Commons CC0 dedication.",
    "estado": "vivo",
-   "probado": "2026-11-02"
+   "probado": "2026-11-03"
   }
  ],
  "series": {

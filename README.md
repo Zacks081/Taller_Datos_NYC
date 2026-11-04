@@ -72,7 +72,7 @@ verificacion/verificar.py revisa todo el lago y termina con error si algo falla.
 
 - Que cada columna de las tablas esté descrita en «campos» y cada fuente tenga su día de prueba.
 - Entre los nombres de campo prohibidos también están dirección, propietario y BBL, que es lo que decidimos no publicar. Los teléfonos se buscan con el formato de Estados Unidos.
-- De dominio: que estén los cinco boroughs con sus códigos; que la suma de su población dé la de la ciudad y la de sus áreas dé el área de la ciudad; que los parques quepan en cada borough; que cada uno de los siete lugares caiga dentro del polígono de su borough; que las fechas de designación estén entre 1965 y hoy; que la distancia al metro esté marcada como PROXY; que el catálogo y el lago digan lo mismo y que F17 no alimente nada; y que en la web no aparezcan el 8,336,000 ni las entradas inventadas de la app anterior.
+- De dominio: que estén los cinco boroughs con sus códigos; que la suma de su población dé la de la ciudad y la de sus áreas dé el área de la ciudad; que los parques quepan en cada borough; que cada uno de los siete lugares caiga dentro del polígono de su borough; que las fechas de designación estén entre 1965 y hoy; que cada borough tenga al menos 10 landmarks antes de publicar su conteo; que la distancia al metro esté marcada como PROXY; que el catálogo y el lago digan lo mismo y que F17 no alimente nada; y que en la web no aparezcan el 8,336,000 ni las entradas inventadas de la app anterior.
 
 Hoy pasa sin fallos. Para comprobar que sabe fallar, rompimos a propósito una copia del lago: le subimos mil habitantes a Brooklyn, le pusimos un campo bbl al hospital naval, metimos un correo y un teléfono en una nota, le quitamos la vigencia a la renta y movimos el hospital naval a Times Square. Esta es la salida (solo las líneas que fallaron):
 
@@ -86,6 +86,14 @@ FAIL boroughs: habitantes por estación cuadra con población y estaciones  <-
 FAIL lugares: cada punto cae dentro de su borough (F01)  <- ['LOC-006']
 
 7 fallos
+```
+
+El mínimo de 10 landmarks por zona lo agregamos después y lo probamos aparte: con 3 landmarks en Staten Island la salida es
+
+```
+FAIL boroughs: cada zona tiene al menos 10 landmarks antes de publicar el conteo  <- [('Staten Island', 3)]
+
+1 fallos
 ```
 
 El despliegue en Vercel corre la verificación antes de publicar: si falla, no se publica.
@@ -150,7 +158,7 @@ Respondemos una reflexión de «Pensar los datos» (Privacidad: Público no es i
 
 ¿Qué columnas de su lago, cruzadas entre sí o con otra fuente pública, señalan a una persona? Dentro del lago, ninguna. El problema está en una fuente que dejamos por fuera: F03 (Individual Landmark Sites) es pública y trae la dirección y el BBL de 1.532 sitios, muchos de ellos casas donde vive gente. Ni la dirección ni el BBL dicen quién es el dueño, pero si se cruzan con los permisos de la misma comisión (dpm2-m9mq) sale el nombre del propietario. Cada fuente es inocua sola y juntas no. Por eso del patrimonio solo publicamos cuántos landmarks hay en cada borough, y los únicos puntos exactos son los siete lugares, que son monumentos públicos. Para que la decisión no dependa de que alguien se acuerde, la verificación falla si aparece un campo llamado bbl, direccion o propietario; lo probamos rompiendo una copia del lago y lo atrapó.
 
-¿Qué conteo mínimo por zona van a exigir antes de publicar, y por qué ese número? Exigimos mínimo 10 sitios por zona. Un conteo de uno o dos sitios en una zona permitiría señalar una casa concreta; con diez ya no. Hoy el borough con menos landmarks es Queens, con 86, y nuestra zona más pequeña es un borough entero, así que lo cumplimos con holgura. Todavía no está escrito en la verificación; sería una regla fácil de agregar. Lo que no comprobamos es si alguien, con otra fuente, podría llegar a una persona desde estos conteos; con boroughs enteros nos parece muy poco probable.
+¿Qué conteo mínimo por zona van a exigir antes de publicar, y por qué ese número? Exigimos mínimo 10 sitios por zona. Un conteo de uno o dos sitios en una zona permitiría señalar una casa concreta; con diez ya no. Hoy el borough con menos landmarks es Queens, con 86, y nuestra zona más pequeña es un borough entero, así que lo cumplimos con holgura. La verificación lo exige: si algún borough tiene menos de 10, falla y no se publica. Lo que no comprobamos es si alguien, con otra fuente, podría llegar a una persona desde estos conteos; con boroughs enteros nos parece muy poco probable.
 
 ### Seguridad · Minimización: «El dato más seguro es el que no se guarda»
 
@@ -175,7 +183,8 @@ Respondemos una reflexión de «Pensar los datos» (Privacidad: Público no es i
 | Vistas (E2) | Claude Code | Escribir las respuestas con los datos | En la P2 agregó que 1965 fue «la primera tanda de designaciones» | No está en el lago; lo quitó al releer |
 | Lago (E2) | Claude Code | Quitar los datos de la app anterior | Cambió los puntos de Central Park y Hudson Yards por los de Wikidata | Nada; cambiaron dos distancias al metro |
 | Vistas (E2) | Claude | Guiarnos en la prueba de kepler.gl y armar la fila de la bitácora | Una lista de cosas por comprobar (columnas, tooltip, color, unir con boroughs.json, compartir, licencia) y un borrador de la conclusión | Nada que corregir. No pudo abrir la página de GitHub de kepler.gl, así que la licencia y la frase sobre los datos las copiamos nosotros de la herramienta |
-| Posición (E2) | Claude | Reescribir las dos reflexiones de «Nuestra posición» respondiendo las preguntas de las láminas Pensar los datos y Pensar la seguridad | Dos textos con evidencia del sistema (F03 cruzada con dpm2-m9mq, columna sobrante, copias fuera del repositorio) y un mínimo de 10 sitios por zona | El número del mínimo lo puso Claude porque el grupo no tenía uno escrito; hay que confirmarlo o cambiarlo. El conteo más bajo (Queens, 86) salió de lago/boroughs.json |
+| Posición (E2) | Claude | Reescribir las dos reflexiones de «Nuestra posición» respondiendo las preguntas de las láminas Pensar los datos y Pensar la seguridad | Dos textos con evidencia del sistema (F03 cruzada con dpm2-m9mq, columna sobrante, copias fuera del repositorio) y un mínimo de 10 sitios por zona | El número del mínimo lo puso Claude porque el grupo no tenía uno escrito; lo revisamos y lo dejamos en 10. El conteo más bajo (Queens, 86) salió de lago/boroughs.json |
+| Verificación (E2) | Claude Code | Llevar el mínimo de 10 por zona a la verificación | Una comprobación nueva en verificar.py que falla si un borough tiene menos de 10 landmarks | Nada; la probamos con 3 landmarks en Staten Island y falló como debía |
 | Terminal (E2) | Claude Code | Probar la conexión | Dejó un comando esperando entrada y la terminal se colgó dos minutos | Lo detuvo |
 
 El detalle de cada fila está en la hoja «3. Bitácora IA» del Excel (docs/entrega2).

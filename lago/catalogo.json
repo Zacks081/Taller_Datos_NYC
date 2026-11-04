@@ -1,6 +1,6 @@
 {
  "tema": "catalogo",
- "probado": "2026-11-02",
+ "probado": "2026-11-03",
  "fuentes": [
   {
    "id": "F01",
@@ -12,7 +12,7 @@
    "estado": "Integrada",
    "acceso": "vivo",
    "personas": "No",
-   "probado": "2026-11-02",
+   "probado": "2026-11-03",
    "nota": "Límites de los boroughs sin el agua. shape_area viene en pies cuadrados (EPSG:2263)."
   },
   {
@@ -25,7 +25,7 @@
    "estado": "Integrada",
    "acceso": "vivo",
    "personas": "No",
-   "probado": "2026-11-02",
+   "probado": "2026-11-03",
    "nota": "496 estaciones; las 21 de Staten Island son del Staten Island Railway."
   },
   {
@@ -38,7 +38,7 @@
    "estado": "Integrada",
    "acceso": "vivo",
    "personas": "No",
-   "probado": "2026-11-02",
+   "probado": "2026-11-03",
    "nota": "Trae dirección y BBL de cada sitio. Al lago solo entra el conteo por borough."
   },
   {
@@ -51,7 +51,7 @@
    "estado": "Integrada",
    "acceso": "vivo",
    "personas": "No",
-   "probado": "2026-11-02",
+   "probado": "2026-11-03",
    "nota": "Solo polígonos. De aquí sale el registro de Central Park (LP-00851)."
   },
   {
@@ -64,7 +64,7 @@
    "estado": "Integrada",
    "acceso": "vivo",
    "personas": "No",
-   "probado": "2026-11-02",
+   "probado": "2026-11-03",
    "nota": "De aquí solo se toma el Puente de Brooklyn (LP-00098), que no está en F03."
   },
   {
@@ -77,7 +77,7 @@
    "estado": "Integrada",
    "acceso": "vivo",
    "personas": "No",
-   "probado": "2026-11-02",
+   "probado": "2026-11-03",
    "nota": "Incluye canchas, plazoletas y franjas, no solo parques grandes."
   },
   {
@@ -103,7 +103,7 @@
    "estado": "Integrada",
    "acceso": "vivo",
    "personas": "No",
-   "probado": "2026-11-02",
+   "probado": "2026-11-03",
    "nota": "Un solo punto, cerca de City Hall."
   },
   {
@@ -155,7 +155,7 @@
    "estado": "Integrada",
    "acceso": "vivo",
    "personas": "No",
-   "probado": "2026-11-02",
+   "probado": "2026-11-03",
    "nota": "Vistas mensuales hechas por personas (agente «user») del artículo de cada lugar en en.wikipedia."
   },
   {
@@ -168,7 +168,7 @@
    "estado": "Integrada",
    "acceso": "vivo",
    "personas": "No",
-   "probado": "2026-11-02",
+   "probado": "2026-11-03",
    "nota": "Año de inicio, año de apertura y punto de los lugares que la LPC no ubica."
   },
   {
