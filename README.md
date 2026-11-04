@@ -144,15 +144,19 @@ foreach ($p in "/","/app.js","/estilos.css","/lago/ciudad.json","/lago/boroughs.
 
 ## Nuestra posición
 
-(Borrador para que el grupo lo revise y lo ajuste antes de entregar.)
+Respondemos una reflexión de «Pensar los datos» (Privacidad: Público no es inocuo) y una de «Pensar la seguridad» (Minimización: El dato más seguro es el que no se guarda), con evidencia de nuestro sistema.
 
-### Datos: «Público no es inocuo»
+### Datos · Privacidad: «Público no es inocuo»
 
-Ninguna columna del lago, sola o cruzada con otra, señala a una persona, pero llegar a eso fue una decisión y no algo que viniera dado. F03 es pública y trae la dirección y el BBL de 1.532 sitios, muchos de ellos casas donde vive gente; con el conjunto de permisos de la misma comisión se llega al nombre del propietario. Por eso decidimos agregar por zona: del patrimonio solo publicamos cuántos landmarks hay en cada borough. Nuestra zona más pequeña es un borough entero, así que el conteo mínimo nunca baja de decenas de sitios. Y para que la decisión no dependa de la memoria de alguien, la verificación falla si aparece un campo llamado bbl, direccion o propietario. Lo probamos rompiendo una copia del lago y lo atrapó.
+¿Qué columnas de su lago, cruzadas entre sí o con otra fuente pública, señalan a una persona? Dentro del lago, ninguna. El problema está en una fuente que dejamos por fuera: F03 (Individual Landmark Sites) es pública y trae la dirección y el BBL de 1.532 sitios, muchos de ellos casas donde vive gente. Ni la dirección ni el BBL dicen quién es el dueño, pero si se cruzan con los permisos de la misma comisión (dpm2-m9mq) sale el nombre del propietario. Cada fuente es inocua sola y juntas no. Por eso del patrimonio solo publicamos cuántos landmarks hay en cada borough, y los únicos puntos exactos son los siete lugares, que son monumentos públicos. Para que la decisión no dependa de que alguien se acuerde, la verificación falla si aparece un campo llamado bbl, direccion o propietario; lo probamos rompiendo una copia del lago y lo atrapó.
 
-### Seguridad: «El dato más seguro es el que no se guarda»
+¿Qué conteo mínimo por zona van a exigir antes de publicar, y por qué ese número? Exigimos mínimo 10 sitios por zona. Un conteo de uno o dos sitios en una zona permitiría señalar una casa concreta; con diez ya no. Hoy el borough con menos landmarks es Queens, con 86, y nuestra zona más pequeña es un borough entero, así que lo cumplimos con holgura. Todavía no está escrito en la verificación; sería una regla fácil de agregar. Lo que no comprobamos es si alguien, con otra fuente, podría llegar a una persona desde estos conteos; con boroughs enteros nos parece muy poco probable.
 
-Lo que más nos protege no es una compuerta sino lo que dejamos por fuera del lago: las direcciones y los BBL de F03, las denuncias de F16 y los puntos que había inventado la app anterior. Si nos preguntamos qué columna podríamos borrar hoy sin perder ninguna respuesta, la honesta es elevacion_referencia_m: no responde ninguna de las cuatro preguntas y la dejamos como contexto. La copia de nuestros datos que más nos preocupa no está en el repositorio: la app de Lovable sigue publicada con la población sin año y las entradas inventadas. Habría que despublicarla o ponerle un aviso que remita a este sistema.
+### Seguridad · Minimización: «El dato más seguro es el que no se guarda»
+
+¿Qué columna de su lago podrían borrar hoy sin que ninguna pregunta del sistema pierda su respuesta? elevacion_referencia_m: no responde ninguna de las cuatro preguntas y la dejamos solo como contexto. Guardar de más también es una promesa de cuidar, aunque aquí el dato no sea delicado. Lo que más nos protege no es una clave sino lo que nunca entró al lago: las direcciones y los BBL de F03, que el script lee y descarta en memoria, y las denuncias de F16, porque cada fila describe a las personas de la denuncia. Por eso el sistema es abierto: no hay nada que valga la pena cuidar con una clave, y una clave de adorno daría la sensación de seguridad sin tenerla.
+
+¿Dónde hay copias de sus datos fuera del repositorio? En varios lugares, y la que más nos preocupa es la de la app anterior de Lovable, que sigue publicada con la población sin año y las entradas inventadas; habría que despublicarla o ponerle un aviso que remita a este sistema. Hay además una copia del lago en Vercel, que es la misma información pública, los clones y el .zip en los computadores de cada integrante, el Excel del diccionario y las conversaciones con la IA donde pegamos salidas de los scripts. Como todo lo que está en el lago es público y no apunta a personas, esas copias no filtran nada, pero si algún día entrara un dato delicado habría que revisar cada una.
 
 ## Bitácora de IA
 
@@ -171,6 +175,7 @@ Lo que más nos protege no es una compuerta sino lo que dejamos por fuera del la
 | Vistas (E2) | Claude Code | Escribir las respuestas con los datos | En la P2 agregó que 1965 fue «la primera tanda de designaciones» | No está en el lago; lo quitó al releer |
 | Lago (E2) | Claude Code | Quitar los datos de la app anterior | Cambió los puntos de Central Park y Hudson Yards por los de Wikidata | Nada; cambiaron dos distancias al metro |
 | Vistas (E2) | Claude | Guiarnos en la prueba de kepler.gl y armar la fila de la bitácora | Una lista de cosas por comprobar (columnas, tooltip, color, unir con boroughs.json, compartir, licencia) y un borrador de la conclusión | Nada que corregir. No pudo abrir la página de GitHub de kepler.gl, así que la licencia y la frase sobre los datos las copiamos nosotros de la herramienta |
+| Posición (E2) | Claude | Reescribir las dos reflexiones de «Nuestra posición» respondiendo las preguntas de las láminas Pensar los datos y Pensar la seguridad | Dos textos con evidencia del sistema (F03 cruzada con dpm2-m9mq, columna sobrante, copias fuera del repositorio) y un mínimo de 10 sitios por zona | El número del mínimo lo puso Claude porque el grupo no tenía uno escrito; hay que confirmarlo o cambiarlo. El conteo más bajo (Queens, 86) salió de lago/boroughs.json |
 | Terminal (E2) | Claude Code | Probar la conexión | Dejó un comando esperando entrada y la terminal se colgó dos minutos | Lo detuvo |
 
 El detalle de cada fila está en la hoja «3. Bitácora IA» del Excel (docs/entrega2).
